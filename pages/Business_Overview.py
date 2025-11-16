@@ -14,7 +14,7 @@ website_sessions, website_pageviews, products, orders, order_items, order_item_r
 
 # slicers
 orders['created_at'] = pd.to_datetime(orders['created_at'])
-orders['year'] = orders['created_at_'].dt.year
+orders['year'] = orders['created_at'].dt.year
 years = orders['year'].sort_values().unique()
 
 # Streamlit selectbox
