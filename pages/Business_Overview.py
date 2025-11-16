@@ -49,35 +49,36 @@ col3.metric('Total Revenue', total_revenue,'M')
 #col1, col2=st.columns(2)
 #col1.metric('Total Revenue', total_revenue)
 
+col1, col2, col3 = st.columns(3)
 
+with col1:
+    sess = sessions_filtered.groupby('utm_source')['website_session_id'].count().reset_index()
 
-sess = sessions_filtered.groupby('utm_source')['website_session_id'].count().reset_index()
-
-total= sess['website_session_id'].sum()
-sess['percentage'] = (sess['website_session_id'] / total) * 100
-
-# --- Pie Chart ---
-#plt.figure(figsize=(7, 7))
-fig, ax = plt.subplots(figsize=(3, 3))
-
-# Create pie chart
-plt.pie(
-    sess['percentage'], 
-    labels=sess['utm_source'],
-    autopct='%1.1f%%',        # show one decimal place
-    startangle=90,            # rotate so the first slice starts at the top
-    colors=plt.cm.Set2.colors, # use same Set2 palette
-    wedgeprops={'edgecolor': 'white'} # cleaner edges
-)
-
-# Add title
-#plt.title('Percentage of Source-wise Traffic volume', fontsize=14)
-#plt.tight_layout()
-
-# Show chart
-#plt.show()
-ax.set_title('Percentage of Source-wise Traffic Volume', fontsize=14)
-plt.tight_layout()
-
-# --- Show in Streamlit ---
-st.pyplot(fig)
+    total= sess['website_session_id'].sum()
+    sess['percentage'] = (sess['website_session_id'] / total) * 100
+    
+    # --- Pie Chart ---
+    #plt.figure(figsize=(7, 7))
+    fig, ax = plt.subplots(figsize=(7, 7))
+    
+    # Create pie chart
+    plt.pie(
+        sess['percentage'], 
+        labels=sess['utm_source'],
+        autopct='%1.1f%%',        # show one decimal place
+        startangle=90,            # rotate so the first slice starts at the top
+        colors=plt.cm.Set2.colors, # use same Set2 palette
+        wedgeprops={'edgecolor': 'white'} # cleaner edges
+    )
+    
+    # Add title
+    #plt.title('Percentage of Source-wise Traffic volume', fontsize=14)
+    #plt.tight_layout()
+    
+    # Show chart
+    #plt.show()
+    ax.set_title('Percentage of Source-wise Traffic Volume', fontsize=14)
+    plt.tight_layout()
+    
+    # --- Show in Streamlit ---
+    st.pyplot(fig)
