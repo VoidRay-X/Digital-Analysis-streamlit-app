@@ -16,6 +16,5 @@ col2.metric("Total Pageviews", len(website_pageviews))
 col3.metric("Total Products", len(products))
 
 st.write("---")
-
 st.subheader("📊 Quick Snapshot")
 st.write("Explore detailed dashboards using the menu on the left.")
