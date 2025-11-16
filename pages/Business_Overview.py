@@ -24,12 +24,6 @@ all_years = sorted(
 # Sidebar slicer
 selected_year = st.sidebar.selectbox("Select Year", all_years)
 
-'''# Streamlit selectbox
-selected_year = st.sidebar.selectbox(
-    "Select Year",
-    options=sorted(orders['year'].unique())
-)'''
-
 # Filter orders for the selected year
 sessions_filtered = website_sessions[website_sessions['year'] == selected_year]
 orders_filtered = orders[orders['year'] == selected_year]
