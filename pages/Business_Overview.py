@@ -42,10 +42,14 @@ total_session=len(sessions_filtered['website_session_id'])
 total_order=len(orders_filtered['order_id'])
 total_revenue=round(orders_filtered['price_usd'].sum()/1000000,2)
 
-col1, col2, col3 = st.columns(3)
+total_unique_users = order['user_id'].nunique()
+
+
+col1, col2, col3, col4 = st.columns(4)
 col1.metric("Total Sessions", total_session)
 col2.metric('Total Orders',total_order)
 col3.metric('Total Revenue', total_revenue,'M')
+col4.metric('Total Customers',total_unique_users)
 #col1, col2=st.columns(2)
 #col1.metric('Total Revenue', total_revenue)
 
