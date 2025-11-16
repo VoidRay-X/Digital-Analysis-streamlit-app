@@ -9,7 +9,7 @@ st.title("📈 Business Overview")
 # ----------------------------
 website_sessions, website_pageviews, products, orders, order_items, order_item_refunds = load_data()
 
-total_session=website_sessions['website_sessions_id'].nunique()
+total_session=len(website_sessions['website_sessions_id'])
 
 col1, = st.columns(1)
 col1.metric("Total Sessions", total_sessions)
