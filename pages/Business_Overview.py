@@ -12,7 +12,7 @@ website_sessions, website_pageviews, products, orders, order_items, order_item_r
 
 total_session=len(website_sessions['website_session_id'])
 total_order=len(orders['order_id'])
-total_revenue=orders['price_usd'].sum()/1000000
+total_revenue=round(orders['price_usd'].sum()/1000000,2)
 
 col1, col2, col3 = st.columns(3)
 col1.metric("Total Sessions", total_session)
