@@ -58,7 +58,7 @@ sess['percentage'] = (sess['website_session_id'] / total) * 100
 
 # --- Pie Chart ---
 #plt.figure(figsize=(7, 7))
-fig, ax = plt.subplots(figsize=(7, 7))
+fig, ax = plt.subplots(figsize=(3, 3))
 
 # Create pie chart
 plt.pie(
