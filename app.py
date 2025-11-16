@@ -19,7 +19,3 @@ st.write("---")
 
 st.subheader("📊 Quick Snapshot")
 st.write("Explore detailed dashboards using the menu on the left.")
-
-
-
-
