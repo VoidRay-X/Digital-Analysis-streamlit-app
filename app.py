@@ -66,10 +66,10 @@ st.markdown("""
 st.markdown("<div class='nav-buttons'>", unsafe_allow_html=True)
 
 # Update the page names to match your actual filenames in the 'pages/' folder
-st.page_link("Business_Overview", label="📌 Business Overview", icon="📄")
-st.page_link("Market_Analysis", label="📊 Market Analysis", icon="📈")
-st.page_link("Product_Analysis", label="🛒 Product Analysis", icon="🧪")
-st.page_link("Website_Analysis", label="🌐 Website Analysis", icon="💻")
+st.page_link("Business_Overview", label="📌 Business Overview")
+st.page_link("Market_Analysis", label="📊 Market Analysis")
+st.page_link("Product_Analysis", label="🛒 Product Analysis")
+st.page_link("Website_Analysis", label="🌐 Website Analysis")
 
 st.markdown("</div>", unsafe_allow_html=True)
 
