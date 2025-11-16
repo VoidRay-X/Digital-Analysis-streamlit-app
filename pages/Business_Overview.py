@@ -44,7 +44,7 @@ total_revenue=round(orders_filtered['price_usd'].sum()/1000000,2)
 total_unique_users = orders_filtered['user_id'].nunique()
 repeat_customers = orders_filtered['user_id'].value_counts()
 repeat_customers = len(repeat_customers[repeat_customers > 1].index)
-repeat_customers_rate = 100(repeat_customers)/total_unique_users
+repeat_customers_rate = 100*(repeat_customers)/total_unique_users
 
 
 col1, col2, col3, col4 = st.columns(4)
