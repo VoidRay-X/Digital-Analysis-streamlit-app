@@ -36,7 +36,8 @@ total= sess['website_session_id'].sum()
 sess['percentage'] = (sess['website_session_id'] / total) * 100
 
 # --- Pie Chart ---
-plt.figure(figsize=(7, 7))
+#plt.figure(figsize=(7, 7))
+fig, ax = plt.subplots(figsize=(7, 7))
 
 # Create pie chart
 plt.pie(
@@ -49,8 +50,13 @@ plt.pie(
 )
 
 # Add title
-plt.title('Percentage of Source-wise Traffic volume', fontsize=14)
-plt.tight_layout()
+#plt.title('Percentage of Source-wise Traffic volume', fontsize=14)
+#plt.tight_layout()
 
 # Show chart
-plt.show()
+#plt.show()
+ax.set_title('Percentage of Source-wise Traffic Volume', fontsize=14)
+plt.tight_layout()
+
+# --- Show in Streamlit ---
+st.pyplot(fig)
