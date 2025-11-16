@@ -12,9 +12,23 @@ st.markdown("<h1 style='text-align:center;'>📈 Business Overview</h1>", unsafe
 # ----------------------------
 website_sessions, website_pageviews, products, orders, order_items, order_item_refunds = load_data()
 
+# slicers
+orders['created_at'] = pd.to_datetime(orders['created_at'])
+orders['year'] = orders['created_at_'].dt.year
+years = orders['year'].sort_values().unique()
+
+# Streamlit selectbox
+selected_year = st.selectbox("Select Year", years)
+
+# Filter orders for the selected year
+orders_filtered = orders[orders['year'] == selected_year]
+
+st.write(f"Showing data for {selected_year}")
+
+
 total_session=len(website_sessions['website_session_id'])
-total_order=len(orders['order_id'])
-total_revenue=round(orders['price_usd'].sum()/1000000,2)
+total_order=len(orders_filtered['order_id'])
+total_revenue=round(orders_filtered['price_usd'].sum()/1000000,2)
 
 col1, col2, col3 = st.columns(3)
 col1.metric("Total Sessions", total_session)
