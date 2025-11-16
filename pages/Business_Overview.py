@@ -43,8 +43,8 @@ total_order=len(orders_filtered['order_id'])
 total_revenue=round(orders_filtered['price_usd'].sum()/1000000,2)
 total_unique_users = orders_filtered['user_id'].nunique()
 repeat_customers = orders_filtered['user_id'].value_counts()
-repeat_customers = repeat_customers[repeat_customers > 1].index
-repeat_customers_rate = 100*len(repeat_customers)/total_unique_users
+repeat_customers = len(repeat_customers[repeat_customers > 1].index)
+repeat_customers_rate = 100(repeat_customers)/total_unique_users
 
 
 col1, col2, col3, col4 = st.columns(4)
@@ -53,7 +53,7 @@ col2.metric('Total Orders',total_order)
 col3.metric('Total Revenue', total_revenue,'M')
 col4.metric('Total Customers',total_unique_users)
 col1=st.columns(1)
-col1.metric('Repeat customer rate', repeat_customers_rate)
+col1.metric('Repeat customer rate(%)', repeat_customers_rate)
 
 col1, col2, col3 = st.columns(3)
 
