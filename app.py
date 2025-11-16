@@ -1,20 +1,49 @@
 import streamlit as st
-from data_loader import load_data
 
 st.set_page_config(page_title="Home", layout="wide")
 
-st.title("🏠 Welcome to the Digital Analytics Dashboard")
-st.write("Use the left sidebar to navigate to different dashboards.")
+# ----------------------------
+# HOME / COVER PAGE DESIGN
+# ----------------------------
+st.markdown("""
+<style>
+.cover-box {
+    padding: 40px;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+.big-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #333;
+}
+.sub-title {
+    font-size: 20px;
+    color: #555;
+}
+.nav-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-size: 18px;
+    text-decoration: none;
+}
+</style>
+""", unsafe_allow_html=True)
 
-# Load the data
-website_sessions, website_pageviews, products, orders, order_items, order_item_refunds = load_data()
+st.markdown("""
+<div class='cover-box'>
+    <div class='big-title'>📊 Digital Analytics Dashboard</div>
+    <p class='sub-title'>Welcome! Use the left sidebar to navigate between pages.</p>
+    <br>
+    <a href="/?page=Overview" target="_self" class="nav-button">Go to Overview</a>
+</div>
+""", unsafe_allow_html=True)
 
-# KPI Cards
-col1, col2, col3 = st.columns(3)
-col1.metric("Total Sessions", len(website_sessions))
-col2.metric("Total Pageviews", len(website_pageviews))
-col3.metric("Total Products", len(products))
+st.write("")
+st.write("")
 
-st.write("---")
-st.subheader("📊 Quick Snapshot")
-st.write("Explore detailed dashboards using the menu on the left.")
+st.info("👉 Use the left sidebar to open Overview, Marketing, Website, and Product dashboards.")
