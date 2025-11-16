@@ -1,10 +1,15 @@
 import streamlit as st
 
-st.set_page_config(page_title="Home", layout="wide")
-
-st.write("Streamlit version:", st.__version__)
 # ----------------------------
-# HOME / COVER PAGE DESIGN
+# Page Configuration
+# ----------------------------
+st.set_page_config(
+    page_title="Home",
+    layout="wide",
+)
+
+# ----------------------------
+# CSS for Home Page
 # ----------------------------
 st.markdown("""
 <style>
@@ -24,38 +29,47 @@ st.markdown("""
     font-size: 20px;
     color: #555;
 }
-.nav-button {
-    display: inline-block;
+.nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+.stButton>button {
     background-color: #4CAF50;
-    color: white !important;
+    color: white;
     padding: 14px 30px;
     border-radius: 8px;
     font-size: 18px;
-    margin: 10px;
-    text-decoration: none;
+    cursor: pointer;
 }
 </style>
 """, unsafe_allow_html=True)
 
+# ----------------------------
+# Home / Cover Page
+# ----------------------------
 st.markdown("""
 <div class='cover-box'>
     <div class='big-title'>📊 Digital Analytics Dashboard</div>
-    <p class='sub-title'>Welcome! Choose a dashboard below:</p>
-    <br>
+    <p class='sub-title'>Welcome! Use the buttons below or the sidebar to navigate between pages.</p>
 </div>
 """, unsafe_allow_html=True)
 
-# -------- NAVIGATION BUTTONS --------
-st.markdown("### 🔽 Navigate to Dashboards")
+# ----------------------------
+# Navigation Buttons
+# ----------------------------
+st.markdown("<div class='nav-buttons'>", unsafe_allow_html=True)
 
-col1, col2 = st.columns(2)
+st.page_link("Business_Overview", label="📌 Business Overview", icon="📄")
+st.page_link("Market_Analysis", label="📊 Market Analysis", icon="📈")
+st.page_link("Product_Analysis", label="🛒 Product Analysis", icon="🧪")
+st.page_link("Website_Analysis", label="🌐 Website Analysis", icon="💻")
 
-with col1:
-    st.page_link("Business_Overview", label="📌 Business Overview", icon="📄")
-    st.page_link("Market_Analysis", label="📊 Market Analysis", icon="📈")
+st.markdown("</div>", unsafe_allow_html=True)
 
-with col2:
-    st.page_link("Product_Analysis", label="🛒 Product Analysis", icon="🧪")
-    st.page_link("Website_Analysis", label="🌐 Website Analysis", icon="💻")
-
-st.info("👉 You can also use the left sidebar to navigate between pages.")
+# ----------------------------
+# Additional Info
+# ----------------------------
+st.info("👉 Use the left sidebar to open Overview, Marketing, Website, and Product dashboards.")
