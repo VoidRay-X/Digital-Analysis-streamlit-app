@@ -66,7 +66,8 @@ with col1:
         sess['percentage'], 
         labels=sess['utm_source'],
         autopct='%1.1f%%',        # show one decimal place
-        startangle=90,            # rotate so the first slice starts at the top
+        startangle=90,
+        fontsize=11        # rotate so the first slice starts at the top
         colors=plt.cm.Set2.colors, # use same Set2 palette
         wedgeprops={'edgecolor': 'white'} # cleaner edges
     )
