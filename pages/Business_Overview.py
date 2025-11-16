@@ -42,9 +42,9 @@ total_session=len(sessions_filtered['website_session_id'])
 total_order=len(orders_filtered['order_id'])
 total_revenue=round(orders_filtered['price_usd'].sum()/1000000,2)
 total_unique_users = orders_filtered['user_id'].nunique()
-repeat_customers = orders_filtered['user_id'].value_counts()
-repeat_customers = len(repeat_customers[repeat_customers > 1].index)
-repeat_customers_rate = 100*(repeat_customers)/total_unique_users
+repeat_customer_ids = orders_filtered['user_id'].value_counts()
+repeat_customers = (repeat_customer_ids > 1).sum()
+repeat_customers_rate = (repeat_customers / total_unique_users) * 100
 
 
 col1, col2, col3, col4 = st.columns(4)
