@@ -18,7 +18,10 @@ orders['year'] = orders['created_at'].dt.year
 years = orders['year'].sort_values().unique()
 
 # Streamlit selectbox
-selected_year = st.selectbox("Select Year", years)
+selected_year = st.sidebar.selectbox(
+    "Select Year",
+    options=sorted(orders['year'].unique())
+)
 
 # Filter orders for the selected year
 orders_filtered = orders[orders['year'] == selected_year]
