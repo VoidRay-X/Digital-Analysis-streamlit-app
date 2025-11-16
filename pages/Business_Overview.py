@@ -12,4 +12,4 @@ website_sessions, website_pageviews, products, orders, order_items, order_item_r
 total_session=len(website_sessions['website_session_id'])
 
 col1, = st.columns(1)
-col1.metric("Total Sessions", total_sessions)
+col1.metric("Total Sessions", total_session)
