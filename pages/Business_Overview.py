@@ -1,7 +1,12 @@
 import streamlit as st
 from data_loader import load_data
 import plotly.express as px
-
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from statsmodels.tsa.seasonal import seasonal_decompose
+from matplotlib.dates import DateFormatter
 
 
 #st.title("📈 Business Overview")
