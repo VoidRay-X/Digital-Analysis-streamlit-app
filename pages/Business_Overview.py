@@ -2,7 +2,8 @@ import streamlit as st
 from data_loader import load_data
 import plotly.express as px
 
-st.title("📈 Business Overview")
+#st.title("📈 Business Overview")
+st.markdown("<h1 style='text-align:center;'>📈 Business Overview</h1>", unsafe_allow_html=True)
 
 # ----------------------------
 # LOAD DATA
