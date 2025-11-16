@@ -77,7 +77,7 @@ with col1:
     
     # Show chart
     #plt.show()
-    ax.set_title('Percentage of Source-wise Traffic Volume', fontsize=14)
+    ax.set_title('Percentage of Source-wise Traffic Volume', fontsize=20)
     plt.tight_layout()
     
     # --- Show in Streamlit ---
