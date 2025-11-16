@@ -14,9 +14,9 @@ total_session=len(website_sessions['website_session_id'])
 total_order=len(orders['order_id'])
 total_revenue=orders['price_usd'].sum()
 
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(2)
 col1.metric("Total Sessions", total_session)
 col2.metric('Total Orders',total_order)
-
-col1, col2=st.columns(2)
-col1.metric('Total Revenue', total_revenue)
+col3.metric('Total Revenue', total_revenue)
+#col1, col2=st.columns(2)
+#col1.metric('Total Revenue', total_revenue)
