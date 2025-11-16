@@ -52,7 +52,7 @@ col1.metric("Total Sessions", total_session)
 col2.metric('Total Orders',total_order)
 col3.metric('Total Revenue', total_revenue,'M')
 col4.metric('Total Customers',total_unique_users)
-col1=st.columns(1)
+col1,=st.columns(1)
 col1.metric('Repeat customer rate(%)', repeat_customers_rate)
 
 col1, col2, col3 = st.columns(3)
