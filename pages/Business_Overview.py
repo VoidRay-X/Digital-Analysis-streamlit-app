@@ -16,13 +16,15 @@ website_sessions, website_pageviews, products, orders, order_items, order_item_r
 # Convert to datetime
 website_sessions['created_at'] = pd.to_datetime(website_sessions['created_at'])
 orders['created_at'] = pd.to_datetime(orders['created_at'])
+order_items['created_at']=pd.to_datetime(order_items['created_at'])
 
 # Extract year
 website_sessions['year'] = website_sessions['created_at'].dt.year
 orders['year'] = orders['created_at'].dt.year
+order_items['year']=order_items['created_at'].dt.year
 
 # Get all unique years from both tables
-all_years = sorted(pd.concat([website_sessions['year'], orders['year']]).unique())
+all_years = sorted(pd.concat([website_sessions['year'], orders['year'],order_items['year']]).unique())
 
 # Sidebar multiselect
 selected_years = st.sidebar.multiselect("Select Year(s)", all_years)
@@ -31,9 +33,11 @@ selected_years = st.sidebar.multiselect("Select Year(s)", all_years)
 if selected_years:  # If user selected at least one year
     sessions_filtered = website_sessions[website_sessions['year'].isin(selected_years)]
     orders_filtered = orders[orders['year'].isin(selected_years)]
+    order_items_filtered = order_items[order_items['year'].isin(selected_years)]
 else:  # If nothing is selected, show all data
     sessions_filtered = website_sessions
     orders_filtered = orders
+    order_items_filtered = order_items
 
 st.write(f"Showing data for: {', '.join(map(str, selected_years)) if selected_years else 'All years'}")
 
@@ -44,7 +48,10 @@ total_revenue=round(orders_filtered['price_usd'].sum()/1000000,2)
 total_unique_users = orders_filtered['user_id'].nunique()
 repeat_customer_ids = orders_filtered['user_id'].value_counts()
 repeat_customers = (repeat_customer_ids > 1).sum()
-repeat_customers_rate = (repeat_customers / total_unique_users) * 100
+repeat_customers_rate = round(repeat_customers / total_unique_users) * 100,2)
+total_quatity=len(order_items_filtered['order_item_id'])
+total_cost=round(orders_filtered['cogs_usd'].sum()/1000000,2)
+total_profit_margin= round(100*(total_revenue-tota_cost)/total_revenue,2)
 
 
 col1, col2, col3, col4 = st.columns(4)
@@ -52,8 +59,11 @@ col1.metric("Total Sessions", total_session)
 col2.metric('Total Orders',total_order)
 col3.metric('Total Revenue', total_revenue,'M')
 col4.metric('Total Customers',total_unique_users)
-col1,=st.columns(1)
-col1.metric('Repeat customer rate(%)', repeat_customers_rate)
+col1,col2,col3,col4=st.columns(4)
+col1.metric('Repeat customers', repeat_customers)
+col2.metric('Repeat customer rate(%)', repeat_customers_rate)
+col3.mertic('Total Order Line',total_quatity)
+col4.mertic('Total Profit Margin(%)', total_profit_margin)
 
 col1, col2, col3 = st.columns(3)
 
