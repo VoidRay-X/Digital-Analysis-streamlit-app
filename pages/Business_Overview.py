@@ -42,7 +42,7 @@ total_session=len(sessions_filtered['website_session_id'])
 total_order=len(orders_filtered['order_id'])
 total_revenue=round(orders_filtered['price_usd'].sum()/1000000,2)
 
-total_unique_users = order['user_id'].nunique()
+total_unique_users = sessions_filtered['user_id'].nunique()
 
 
 col1, col2, col3, col4 = st.columns(4)
