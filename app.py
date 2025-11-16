@@ -50,11 +50,11 @@ st.markdown("### 🔽 Navigate to Dashboards")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.page_link("Page/Business Overview.py", label="📌 Business Overview", icon="📄")
-    st.page_link("Page/Market Analysis.py", label="📊 Market Analysis", icon="📈")
+    st.page_link("Page/Business_Overview.py", label="📌 Business Overview", icon="📄")
+    st.page_link("Page/Market_Analysis.py", label="📊 Market Analysis", icon="📈")
 
 with col2:
-    st.page_link("Page/Product Analysis.py", label="🛒 Product Analysis", icon="🧪")
-    st.page_link("Page/Website Analysis.py", label="🌐 Website Analysis", icon="💻")
+    st.page_link("Page/Product_Analysis.py", label="🛒 Product Analysis", icon="🧪")
+    st.page_link("Page/Website_Analysis.py", label="🌐 Website Analysis", icon="💻")
 
 st.info("👉 You can also use the left sidebar to navigate between pages.")
