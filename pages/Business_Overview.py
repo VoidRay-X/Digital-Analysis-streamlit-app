@@ -51,7 +51,7 @@ repeat_customers = (repeat_customer_ids > 1).sum()
 repeat_customers_rate = round((repeat_customers / total_unique_users) * 100,2)
 total_quatity=len(order_items_filtered['order_item_id'])
 total_cost=round(orders_filtered['cogs_usd'].sum()/1000000,2)
-total_profit_margin= round(100*(total_revenue-tota_cost)/total_revenue,2)
+total_profit_margin= round(100*(total_revenue - total_cost)/total_revenue,2)
 
 
 col1, col2, col3, col4 = st.columns(4)
