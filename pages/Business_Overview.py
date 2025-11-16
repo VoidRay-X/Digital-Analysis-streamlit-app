@@ -13,23 +13,31 @@ st.markdown("<h1 style='text-align:center;'>📈 Business Overview</h1>", unsafe
 website_sessions, website_pageviews, products, orders, order_items, order_item_refunds = load_data()
 
 # slicers
+website_sessions['created_at'] = pd.to_datetime(website_sessions['created_at'])
 orders['created_at'] = pd.to_datetime(orders['created_at'])
+website_sessions['year'] = website_sessions['created_at'].dt.year
 orders['year'] = orders['created_at'].dt.year
-years = orders['year'].sort_values().unique()
+all_years = sorted(
+    pd.concat([website_sessions['year'], orders['year']]).unique()
+)
 
-# Streamlit selectbox
+# Sidebar slicer
+selected_year = st.sidebar.selectbox("Select Year", all_years)
+
+'''# Streamlit selectbox
 selected_year = st.sidebar.selectbox(
     "Select Year",
     options=sorted(orders['year'].unique())
-)
+)'''
 
 # Filter orders for the selected year
+sessions_filtered = website_sessions[website_sessions['year'] == selected_year]
 orders_filtered = orders[orders['year'] == selected_year]
 
 st.write(f"Showing data for {selected_year}")
 
 
-total_session=len(website_sessions['website_session_id'])
+total_session=len(sessions_filtered['website_session_id'])
 total_order=len(orders_filtered['order_id'])
 total_revenue=round(orders_filtered['price_usd'].sum()/1000000,2)
 
@@ -42,7 +50,7 @@ col3.metric('Total Revenue', total_revenue,'M')
 
 
 
-sess = website_sessions.groupby('utm_source')['website_session_id'].count().reset_index()
+sess = sessions_filtered.groupby('utm_source')['website_session_id'].count().reset_index()
 
 total= sess['website_session_id'].sum()
 sess['percentage'] = (sess['website_session_id'] / total) * 100
