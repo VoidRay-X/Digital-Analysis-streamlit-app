@@ -24,11 +24,13 @@ st.markdown("""
     color: #555;
 }
 .nav-button {
+    display: inline-block;
     background-color: #4CAF50;
-    color: white;
+    color: white !important;
     padding: 14px 30px;
     border-radius: 8px;
     font-size: 18px;
+    margin: 10px;
     text-decoration: none;
 }
 </style>
@@ -37,13 +39,22 @@ st.markdown("""
 st.markdown("""
 <div class='cover-box'>
     <div class='big-title'>📊 Digital Analytics Dashboard</div>
-    <p class='sub-title'>Welcome! Use the left sidebar to navigate between pages.</p>
+    <p class='sub-title'>Welcome! Choose a dashboard below:</p>
     <br>
-    <a href="/?page=Overview" target="_self" class="nav-button">Go to Overview</a>
 </div>
 """, unsafe_allow_html=True)
 
-st.write("")
-st.write("")
+# -------- NAVIGATION BUTTONS --------
+st.markdown("### 🔽 Navigate to Dashboards")
 
-st.info("👉 Use the left sidebar to open Overview, Marketing, Website, and Product dashboards.")
+col1, col2 = st.columns(2)
+
+with col1:
+    st.page_link("pages/Business Overview.py", label="📌 Business Overview", icon="📄")
+    st.page_link("pages/Market Analysis.py", label="📊 Market Analysis", icon="📈")
+
+with col2:
+    st.page_link("pages/Product Analysis.py", label="🛒 Product Analysis", icon="🧪")
+    st.page_link("pages/Website Analysis.py", label="🌐 Website Analysis", icon="💻")
+
+st.info("👉 You can also use the left sidebar to navigate between pages.")
