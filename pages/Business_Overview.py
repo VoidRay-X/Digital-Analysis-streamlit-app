@@ -16,7 +16,7 @@ website_sessions, website_pageviews, products, orders, order_items, order_item_r
 # Convert to datetime
 website_sessions['created_at'] = pd.to_datetime(website_sessions['created_at'])
 orders['created_at'] = pd.to_datetime(orders['created_at'])
-order_items['created_at']=pd.to_datetime(order_items['created_at'])
+order_items['created_at'] = pd.to_datetime(order_items['created_at'])
 
 # Extract year
 website_sessions['year'] = website_sessions['created_at'].dt.year
